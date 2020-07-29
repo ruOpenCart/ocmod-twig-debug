@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>[OCN] Twig Debug</name>
+    <code>ocn__twig_debug</code>
+    <version>3.0.0.0</version>
+    <author>Hkr</author>
+    <link>https://forum.opencart.name/resources/54/</link>
+    <date>29.07.2020</date>
+
+    <file path="system/library/template/twig.php">
+        <operation>
+            <search trim="true"><![CDATA['debug'       => false,]]></search>
+            <add position="replace" trim="true"><![CDATA[
+                // ocn__twig_debug
+                'debug'       => true,
+                // ocn__twig_debug
+            ]]></add>
+        </operation>
+        <operation>
+            <search trim="true"><![CDATA[$twig = new \Twig\Environment($loader, $config);]]></search>
+            <add position="after" trim="true"><![CDATA[
+                // ocn__twig_debug
+                $twig->addExtension(new \Twig\Extension\DebugExtension());
+                // ocn__twig_debug
+            ]]></add>
+        </operation>
+    </file>
+</modification>
